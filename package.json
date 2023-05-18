@@ -24,8 +24,10 @@
     "express-validator": "^7.0.1",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
+    "mysql2": "^3.3.1",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
+    "sequelize": "^6.31.1",
     "timeago.js": "^4.0.2"
   },
   "devDependencies": {
