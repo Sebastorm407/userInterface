@@ -4,6 +4,7 @@ const exphbs = require('express-handlebars');
 const path = require('path');
 const sequelize = require('../database/db.js')
 const User = require('../database/models/User.js')
+const Links = require('../database/models/Links.js');
 
 const PORT = process.env.PORT || 3000;
 //Inicializaciones
@@ -12,14 +13,14 @@ const app = express();
 //Configuraciones
 
 app.set('views', path.join(__dirname, 'views'));
-/*app.engine('.hbs', exphbs({
+app.engine('.hbs', exphbs.engine({
     defaultLayout: 'main',
     layoutsDir: path.join(app.get('views'), 'layouts'), 
     partialsDir: path.join(app.get('views'), 'partials'),
     //Se configura la extension que tendran los archivos .handlebars a .hbs
     extname: '.hbs',
     helpers: require('./lib/handlebars.js')
-}));*/
+}));
 
 app.set('view engine', '.hbs')
 
@@ -44,14 +45,26 @@ Todas las vistas tienen acceso a la informacion*/
 app.get('/', (req, res) => {
     User.create({
         name: "Sebas",
-        birthday: new Date(2005, 08, 27)
+        username: "Sebastorm",
+        password: "12345",
+        fullname: "Sebastian Vargas"
     }).then(user => {
         res.json(user);
     });
 })
+
+app.get('/', (req, res) => {
+    Links.create({
+        titulo: "Entretenimiento",
+        url: "https://hola.com",
+        descripcion: "Es un cosa de locos"
+    }).then(links => {
+        res.json(links);
+    });
+})
 //app.use(require('./routes/index.js'));
-app.use(require('./routes/authentication.js'))
-app.use('/links', require('./routes/links.js'))
+app.use(require('./routes/authentication.route.js'))
+app.use('/links', require('./routes/links.route.js'))
 
 //Public
 

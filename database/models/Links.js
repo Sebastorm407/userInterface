@@ -1,10 +1,10 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require('../db.js');
 
-class User extends Model {}
-User.init(
+class Links extends Model {}
+Links.init(
     {
-        name: {
+        titulo: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
@@ -13,7 +13,7 @@ User.init(
                 }
             }
         },
-        username: {
+        url: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
@@ -22,16 +22,7 @@ User.init(
                 }
             }
         },
-        password: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                notNull: {
-                    msg: "El campo no puede ser nulo"
-                }
-            }
-        },
-        fullname: {
+        descripcion: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
@@ -43,8 +34,8 @@ User.init(
     },
     {
         sequelize,
-        modelName: "user",
+        modelName: "links",
         timestamps: false
     })
 
-module.exports = User;
+module.exports = Links;

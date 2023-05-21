@@ -1,3 +1,6 @@
 npm i express express-handlebars express-session mysql express-mysql-session morgan bcryptjs passport passport-local timeago.js connect-flash express-validator
 
 npm install --save sequelize mysql2
+
+Para poder conectarse a la base de datos se requiere crearla, para esto se usara MySqlWorkBrench como gestor
+de base de datos. En este proyecto la base de datos se llama: "applogin"
