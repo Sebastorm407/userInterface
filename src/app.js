@@ -1,6 +1,5 @@
 const express = require('express');
 const morgan = require('morgan');
-const exphbs = require('express-handlebars');
 const path = require('path');
 const sequelize = require('../database/db.js')
 const User = require('../database/models/User.js')
@@ -12,17 +11,6 @@ const app = express();
 
 //Configuraciones
 
-app.set('views', path.join(__dirname, 'views'));
-app.engine('.hbs', exphbs.engine({
-    defaultLayout: 'main',
-    layoutsDir: path.join(app.get('views'), 'layouts'), 
-    partialsDir: path.join(app.get('views'), 'partials'),
-    //Se configura la extension que tendran los archivos .handlebars a .hbs
-    extname: '.hbs',
-    helpers: require('./lib/handlebars.js')
-}));
-
-app.set('view engine', '.hbs')
 
 //Middlewares
 

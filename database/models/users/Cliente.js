@@ -1,41 +1,45 @@
-const { Model, DataTypes } = require("sequelize");
-const sequelize = require('../db.js');
+const { Model, DataTypes} = require('sequelize')
+const sequelize = require('../../db.js')
 
-class Links extends Model {}
-Links.init(
+class Cliente extends Model {}
+Cliente.init(
     {
-        titulo: {
+        clave: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 notNull: {
-                    msg: "El campo no puede ser nulo"
+                    msg: "Ingresa una clave"
+                },
+                isDecimal: {
+                    msg: "La clave debe ser un numero entero o una palabra"
                 }
             }
         },
-        url: {
+        nivel_academico: { 
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 notNull: {
-                    msg: "El campo no puede ser nulo"
+                    msg: "Ingresa tu nivel academico"
                 }
             }
         },
-        descripcion: {
+        ocupacion: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 notNull: {
-                    msg: "El campo no puede ser nulo"
+                    msg: "Ingresa a que te dedicas"
                 }
             }
         }
     },
     {
         sequelize,
-        modelName: "links",
+        modelName: "cliente",
         timestamps: false
-    })
+    }
+)
 
-module.exports = Links;
+module.exports = Cliente;
