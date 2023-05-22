@@ -32,8 +32,8 @@ import Regis_psi_cliente from "./weak-entity/Regis_psi_cliente";
 
 //PERSONA
 
-Rol.hasMany(Persona)
-Persona.belongsTo(Rol)
+Persona.hasMany(Rol)
+Rol.belongsTo(Persona)
 
 Eps.hasMany(Persona)
 Persona.belongsTo(Eps)
@@ -53,5 +53,27 @@ Medico.belongsTo(Persona)
 Persona.hasMany(Psicologo)
 Psicologo.belongsTo(Persona)
 
+//PAIS DEPARTAMENTO CIUDAD
+
+Pais.hasMany(Departamento)
+Departamento.belongsTo(Pais)
+
+Departamento.hasMany(Ciudad)
+Ciudad.belongsTo(Departamento)
+
 //CLIENTE
 
+Cliente.belongsToMany(Abogado, {through: Regis_abo_cliente})
+Abogado.belongsToMany(Cliente, {through: Regis_abo_cliente})
+
+Cliente.belongsToMany(Medico, {through: Regis_med_cliente})
+Medico.belongsToMany(Cliente, {through: Regis_med_cliente})
+
+Cliente.belongsToMany(Psicologo, {through: Regis_psi_cliente})
+Psicologo.belongsToMany(Cliente, {through: Regis_psi_cliente})
+
+Cliente.belongsToMany(Discapacidad, {through: Discapacidad_cliente})
+Discapacidad.belongsToMany(Cliente, {through: Discapacidad_cliente})
+
+Cliente.belongsToMany(Enfermedad, {through: Enfermedad_cliente})
+Enfermedad.belongsToMany(Cliente, {through: Enfermedad_cliente})
